@@ -40,7 +40,9 @@ struct StoryView: View {
                 let item: StoryItem = try JSONDecoder().decode(StoryItem.self, from: data)
                 
                 if let storyUrl = item.url {
-                    self.urlWatcher.url = storyUrl
+                    DispatchQueue.main.async {
+                        self.urlWatcher.url = storyUrl
+                    }
                 } else {
                     print("No url")
                 }
