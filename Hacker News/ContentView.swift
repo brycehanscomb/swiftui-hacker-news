@@ -8,55 +8,6 @@
 
 import SwiftUI
 
-struct StoryItem: Decodable {
-    let title: String
-    let url: String?
-}
-
-struct MainView: View {
-    public var _storyId: Int
-    
-    @State private var url: String = "https://google.com";
-    
-    init(storyId: Int) {
-        self._storyId = storyId
-        self.fetchStory()
-    }
-    
-    var body: some View {
-        VStack {
-            Text("(Load a webview here for the URL of Story #\(self._storyId))")
-            Text("URL is: \(self.url)")
-        }
-    }
-    
-    private func fetchStory() {
-        print("loading")
-        let url = URL(string: "https://hacker-news.firebaseio.com/v0/item/\(self._storyId).json")!
-
-        let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
-            guard let data = data else {
-                print(String(error.debugDescription))
-                return
-            }
-            
-            do {
-                let item: StoryItem = try JSONDecoder().decode(StoryItem.self, from: data)
-                
-                if let storyUrl = item.url {
-                    print("url = \(storyUrl)")
-                    self.url = storyUrl
-                } else {
-                    print("No url")
-                }
-            } catch {
-                print(error)
-            }
-        }
-
-        task.resume()
-    }
-}
 
 struct StoryLink: View {
     public let storyId: Int
@@ -145,7 +96,7 @@ struct ContentView: View {
                     }.offset(x: 0, y: CGFloat(self.storyIds.firstIndex(of: storyId)! * -7)) // there's a weird 7px gap between items when using a Divider()
                 }
             }.frame(minWidth: 200, maxWidth: 400).background(Color(NSColor.textBackgroundColor))
-            MainView(storyId: self.activeItem).frame(maxWidth: .infinity, maxHeight: .infinity)
+            StoryView(storyId: self.activeItem).frame(maxWidth: .infinity, maxHeight: .infinity)
         }.frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
