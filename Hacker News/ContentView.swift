@@ -10,13 +10,51 @@ import SwiftUI
 
 struct StoryItem: Decodable {
     let title: String
+    let url: String?
 }
 
 struct MainView: View {
-    public let storyId: Int;
+    public var _storyId: Int
+    
+    @State private var url: String = "https://google.com";
+    
+    init(storyId: Int) {
+        self._storyId = storyId
+        self.fetchStory()
+    }
     
     var body: some View {
-        Text("(Load a webview here for the URL of Story #\(self.storyId))")
+        VStack {
+            Text("(Load a webview here for the URL of Story #\(self._storyId))")
+            Text("URL is: \(self.url)")
+        }
+    }
+    
+    private func fetchStory() {
+        print("loading")
+        let url = URL(string: "https://hacker-news.firebaseio.com/v0/item/\(self._storyId).json")!
+
+        let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
+            guard let data = data else {
+                print(String(error.debugDescription))
+                return
+            }
+            
+            do {
+                let item: StoryItem = try JSONDecoder().decode(StoryItem.self, from: data)
+                
+                if let storyUrl = item.url {
+                    print("url = \(storyUrl)")
+                    self.url = storyUrl
+                } else {
+                    print("No url")
+                }
+            } catch {
+                print(error)
+            }
+        }
+
+        task.resume()
     }
 }
 
@@ -25,7 +63,8 @@ struct StoryLink: View {
     public let isActive: Bool
     
     @State private var loading: Bool = false
-    @State private var data: String = ""
+    
+    @State private var data: Optional<StoryItem> = nil
     
     var body: some View {
         VStack(spacing: 0) {
@@ -41,8 +80,8 @@ struct StoryLink: View {
             return "Loading..."
         }
         
-        if (self.data.count > 0) {
-            return self.data
+        if let story = self.data {
+            return story.title
         }
         
         return String("Story \(self.storyId)")
@@ -59,10 +98,15 @@ struct StoryLink: View {
                 self.loading = false
                 return
             }
-            
-            let item: StoryItem = try! JSONDecoder().decode(StoryItem.self, from: data)
+                        
+            do {
+                let item: StoryItem = try JSONDecoder().decode(StoryItem.self, from: data)
+                self.data = item
+            } catch {
+                print(error)
+                self.data = nil
+            }
                      
-            self.data = item.title
             self.loading = false
         }
 
