@@ -8,6 +8,7 @@
 
 import Cocoa
 import SwiftUI
+import AppKit
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -22,16 +23,37 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Create the window and set the content view. 
         window = NSWindow(
             contentRect: NSRect(x: 0, y: 0, width: 480, height: 300),
-            styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
+            styleMask: [.titled, .miniaturizable, .resizable],
             backing: .buffered, defer: false)
         window.center()
+        
         window.setFrameAutosaveName("Main Window")
         window.contentView = NSHostingView(rootView: contentView)
+        
+        window.title = "Hacker News"
+        
+        window.titleVisibility = .hidden
+        
+        self.createTitleBar(window: window)
+        
         window.makeKeyAndOrderFront(nil)
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
+    }
+    
+    func createTitleBar(window: NSWindow) {
+        let titlebarAccessoryView = TitlebarAccessory().edgesIgnoringSafeArea(.top)
+        let accessoryHostingView = NSHostingView(rootView:titlebarAccessoryView)
+        let titlebarAccessory = NSTitlebarAccessoryViewController()
+        
+        titlebarAccessory.view = accessoryHostingView
+        titlebarAccessory.layoutAttribute = .bottom
+        accessoryHostingView.frame.size = accessoryHostingView.intrinsicContentSize
+        
+        // Add the titlebar accessory
+        window.addTitlebarAccessoryViewController(titlebarAccessory)
     }
 
 

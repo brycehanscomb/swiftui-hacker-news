@@ -13,6 +13,8 @@
 		02ACA3142445C4A6004CEE93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02ACA3132445C4A6004CEE93 /* Assets.xcassets */; };
 		02ACA3172445C4A6004CEE93 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02ACA3162445C4A6004CEE93 /* Preview Assets.xcassets */; };
 		02ACA31A2445C4A6004CEE93 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02ACA3182445C4A6004CEE93 /* Main.storyboard */; };
+		02AF467C2446D9F600E41DE8 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AF467B2446D9F600E41DE8 /* WebView.swift */; };
+		02AF467E2446DE8E00E41DE8 /* TitlebarAccessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AF467D2446DE8E00E41DE8 /* TitlebarAccessory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		02ACA3192445C4A6004CEE93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		02ACA31B2445C4A6004CEE93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		02ACA31C2445C4A6004CEE93 /* Hacker_News.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Hacker_News.entitlements; sourceTree = "<group>"; };
+		02AF467B2446D9F600E41DE8 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		02AF467D2446DE8E00E41DE8 /* TitlebarAccessory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitlebarAccessory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +69,8 @@
 				02ACA31C2445C4A6004CEE93 /* Hacker_News.entitlements */,
 				02ACA3152445C4A6004CEE93 /* Preview Content */,
 				029694B424469F2C00EB12A1 /* StoryView.swift */,
+				02AF467B2446D9F600E41DE8 /* WebView.swift */,
+				02AF467D2446DE8E00E41DE8 /* TitlebarAccessory.swift */,
 			);
 			path = "Hacker News";
 			sourceTree = "<group>";
@@ -148,7 +154,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02AF467E2446DE8E00E41DE8 /* TitlebarAccessory.swift in Sources */,
 				029694B524469F2C00EB12A1 /* StoryView.swift in Sources */,
+				02AF467C2446D9F600E41DE8 /* WebView.swift in Sources */,
 				02ACA3122445C4A1004CEE93 /* ContentView.swift in Sources */,
 				02ACA3102445C4A1004CEE93 /* AppDelegate.swift in Sources */,
 			);
