@@ -21,6 +21,7 @@ struct StoryLink: View {
                 .foregroundColor(self.isActive
                     ? Color(NSColor.selectedMenuItemTextColor)
                     : Color(NSColor.textColor))
+            Divider()
         }
         .background(self.isActive
             ? Color(NSColor.selectedContentBackgroundColor)
@@ -90,13 +91,15 @@ struct ContentView: View {
     
     @State var windowTitle = ""
     
+    private let scrollViewItemDividerMargin = -7
+    
     var body: some View {
         NavigationView {
             ScrollView {
                 ForEach(self.vm.loadedStories, id: \.title) { storyItem in
                     StoryLink(story: storyItem, isActive: self.vm.isActiveStory(storyItem)).onTapGesture {
                         self.vm.setActiveStory(storyItem)
-                    }
+                    }.offset(x: 0, y: CGFloat(self.scrollViewItemDividerMargin * self.vm.loadedStories.firstIndex(of: storyItem)!))
                 }
             }.frame(maxWidth: 300, maxHeight: .infinity).background(Color(NSColor.windowBackgroundColor))
             if self.vm.activeStory != nil {
