@@ -15,11 +15,16 @@ struct StoryLink: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            Text(self.story.title).frame(maxWidth: .infinity, alignment: .topLeading).padding(15)
+            Text(self.story.title)
+                .frame(maxWidth: .infinity, alignment: .topLeading)
+                .padding(15)
+                .foregroundColor(self.isActive
+                    ? Color(NSColor.selectedMenuItemTextColor)
+                    : Color(NSColor.textColor))
         }
         .background(self.isActive
             ? Color(NSColor.selectedContentBackgroundColor)
-            : Color(NSColor.textBackgroundColor)
+            : Color.clear
         )
     }
 //    public let storyId: Int
@@ -93,7 +98,7 @@ struct ContentView: View {
                         self.vm.setActiveStory(storyItem)
                     }
                 }
-            }.frame(maxWidth: 300, maxHeight: .infinity)
+            }.frame(maxWidth: 300, maxHeight: .infinity).background(Color(NSColor.windowBackgroundColor))
             if self.vm.activeStory != nil {
                 VStack {
                     Text(String(self.vm.activeStory!.url!))
