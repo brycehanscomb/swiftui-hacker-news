@@ -32,7 +32,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         window.title = "Hacker News"
         
-        window.titleVisibility = .hidden
+//        window.titleVisibility = .hidden
         
         self.createTitleBar(window: window)
         

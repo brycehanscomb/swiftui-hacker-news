@@ -8,13 +8,27 @@
 
 import SwiftUI
 
+public struct CustomButtonStyle: ButtonStyle {
+    public func makeBody(configuration: Self.Configuration) -> some View {
+        configuration.label
+            .background(Color(NSColor.controlColor))
+            .foregroundColor(Color(NSColor.textColor))
+            .cornerRadius(4)
+            
+    }
+}
+
 struct TitlebarAccessory: View {
     var body: some View {
         HStack(alignment: .top) {
             Button(action: { return }) {
-                Image(nsImage: NSImage(named: NSImage.touchBarSidebarTemplateName)!)
-            }.buttonStyle(PlainButtonStyle())
-        }.background(Color.green)
+                Text("Show Feed")
+            }
+            Spacer()
+            Button(action: { return }) {
+                Text("Show Comments")
+            }
+        }.frame(maxWidth: .infinity, maxHeight: .infinity).padding(7)
     }
 }
 

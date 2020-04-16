@@ -12,6 +12,7 @@ import SwiftUI
 struct StoryLink: View {
     public let storyId: Int
     public let isActive: Bool
+    @Binding public var storyItem: StoryItem
     
     @State private var loading: Bool = false
     
@@ -23,7 +24,9 @@ struct StoryLink: View {
                 self.fetchStory()
             }.frame(maxWidth: .infinity, alignment: .topLeading).padding(15)
             Divider()
-        }.background(self.isActive ? Color(NSColor.selectedContentBackgroundColor) : Color(NSColor.textBackgroundColor))
+        }.background(self.isActive ? Color(NSColor.selectedContentBackgroundColor) : Color(NSColor.textBackgroundColor)).onTapGesture {
+            self.storyItem = self.data!
+        }
     }
     
     private func getLabel() -> String {
@@ -85,18 +88,9 @@ struct ContentView: View {
         22861640,
     ]
     
-    @State var activeItem: Int = 22862053
-    
     var body: some View {
         NavigationView {
-            ScrollView {
-                ForEach(self.storyIds, id: \.self) { storyId in
-                    StoryLink(storyId: storyId, isActive: storyId == self.activeItem).frame(maxWidth: .infinity).onTapGesture {
-                        self.activeItem = storyId
-                    }.offset(x: 0, y: CGFloat(self.storyIds.firstIndex(of: storyId)! * -7)) // there's a weird 7px gap between items when using a Divider()
-                }
-            }.frame(minWidth: 200, maxWidth: 400).background(Color(NSColor.textBackgroundColor))
-            StoryView(storyId: self.activeItem).frame(maxWidth: .infinity, maxHeight: .infinity)
+            Spacer()
         }.frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
