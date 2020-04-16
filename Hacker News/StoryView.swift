@@ -2,9 +2,13 @@ import Foundation
 import SwiftUI
 import WebKit
 
-struct StoryItem: Decodable {
+struct StoryItem: Decodable, Equatable {
     let title: String
     let url: String?
+    
+    static func == (lsh: StoryItem, rsh: StoryItem) -> Bool {
+        return String("\(lsh.title):\(lsh.url)") == String("\(rsh.title):\(rsh.url)")
+    }
 }
 
 class UrlWatcher : ObservableObject {

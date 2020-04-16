@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		026F5B7E24485DFB00B3A9EE /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026F5B7D24485DFB00B3A9EE /* ContentViewController.swift */; };
 		029694B524469F2C00EB12A1 /* StoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029694B424469F2C00EB12A1 /* StoryView.swift */; };
 		02ACA3102445C4A1004CEE93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02ACA30F2445C4A1004CEE93 /* AppDelegate.swift */; };
 		02ACA3122445C4A1004CEE93 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02ACA3112445C4A1004CEE93 /* ContentView.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		026F5B7D24485DFB00B3A9EE /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		029694B424469F2C00EB12A1 /* StoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryView.swift; sourceTree = "<group>"; };
 		02ACA30C2445C4A1004CEE93 /* Hacker News.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hacker News.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		02ACA30F2445C4A1004CEE93 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 				029694B424469F2C00EB12A1 /* StoryView.swift */,
 				02AF467B2446D9F600E41DE8 /* WebView.swift */,
 				02AF467D2446DE8E00E41DE8 /* TitlebarAccessory.swift */,
+				026F5B7D24485DFB00B3A9EE /* ContentViewController.swift */,
 			);
 			path = "Hacker News";
 			sourceTree = "<group>";
@@ -158,6 +161,7 @@
 				029694B524469F2C00EB12A1 /* StoryView.swift in Sources */,
 				02AF467C2446D9F600E41DE8 /* WebView.swift in Sources */,
 				02ACA3122445C4A1004CEE93 /* ContentView.swift in Sources */,
+				026F5B7E24485DFB00B3A9EE /* ContentViewController.swift in Sources */,
 				02ACA3102445C4A1004CEE93 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
