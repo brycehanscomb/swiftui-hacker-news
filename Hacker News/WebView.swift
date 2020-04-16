@@ -15,7 +15,6 @@ struct WebView: NSViewRepresentable {
     var url: URL
     var loadStatusChanged: ((Bool, Error?) -> Void)? = nil
     
-  
     func makeCoordinator() -> WebView.Coordinator {
         Coordinator(self)
     }
@@ -28,6 +27,9 @@ struct WebView: NSViewRepresentable {
     }
   
     func updateNSView(_ uiView: WKWebView, context: Context) {
+        if (self.url != uiView.url) {
+            uiView.load(URLRequest(url: self.url))
+        }
         // you can access environment via context.environment here
         // Note that this method will be called A LOT
     }

@@ -83,6 +83,8 @@ struct StoryLink: View {
 struct ContentView: View {
     @ObservedObject private var vm = ContentViewController()
     
+    @State var windowTitle = ""
+    
     var body: some View {
         NavigationView {
             ScrollView {
@@ -91,7 +93,16 @@ struct ContentView: View {
                         self.vm.setActiveStory(storyItem)
                     }
                 }
-            }.frame(maxWidth: 300)
+            }.frame(maxWidth: 300, maxHeight: .infinity)
+            if self.vm.activeStory != nil {
+                VStack {
+                    Text(String(self.vm.activeStory!.url!))
+                    WebView(title: self.$windowTitle, url: URL(string: self.vm.activeStory!.url!)!)
+                }
+            }
+            if self.vm.activeStory == nil {
+                Spacer()
+            }
         }.frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
