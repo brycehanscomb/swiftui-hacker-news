@@ -94,24 +94,32 @@ struct ContentView: View {
     private let scrollViewItemDividerMargin = -7
     
     var body: some View {
-        NavigationView {
-            ScrollView {
-                ForEach(self.vm.loadedStories, id: \.title) { storyItem in
-                    StoryLink(story: storyItem, isActive: self.vm.isActiveStory(storyItem)).onTapGesture {
-                        self.vm.setActiveStory(storyItem)
-                    }.offset(x: 0, y: CGFloat(self.scrollViewItemDividerMargin * self.vm.loadedStories.firstIndex(of: storyItem)!))
+        VStack {
+            TitlebarAccessory(
+                shouldShowFeed: self.$vm.shouldShowFeed,
+                shouldShowComments: self.$vm.shouldShowComments
+            ).frame(maxWidth: .infinity, maxHeight: 30)
+            NavigationView {
+                if self.vm.shouldShowFeed {
+                    ScrollView {
+                        ForEach(self.vm.loadedStories, id: \.title) { storyItem in
+                            StoryLink(story: storyItem, isActive: self.vm.isActiveStory(storyItem)).onTapGesture {
+                                self.vm.setActiveStory(storyItem)
+                            }.offset(x: 0, y: CGFloat(self.scrollViewItemDividerMargin * self.vm.loadedStories.firstIndex(of: storyItem)!))
+                        }
+                    }.frame(maxWidth: 300, maxHeight: .infinity).background(Color(NSColor.windowBackgroundColor))
                 }
-            }.frame(maxWidth: 300, maxHeight: .infinity).background(Color(NSColor.windowBackgroundColor))
-            if self.vm.activeStory != nil {
-                VStack {
-                    Text(String(self.vm.activeStory!.url!))
-                    WebView(title: self.$windowTitle, url: URL(string: self.vm.activeStory!.url!)!)
+                if self.vm.activeStory != nil {
+                    VStack {
+                        Text(String(self.vm.activeStory!.url!))
+                        WebView(title: self.$windowTitle, url: URL(string: self.vm.activeStory!.url!)!)
+                    }
                 }
-            }
-            if self.vm.activeStory == nil {
-                Spacer()
-            }
-        }.frame(maxWidth: .infinity, maxHeight: .infinity)
+                if self.vm.activeStory == nil {
+                    Spacer()
+                }
+            }.frame(maxWidth: .infinity, maxHeight: .infinity)
+        }
     }
 }
 

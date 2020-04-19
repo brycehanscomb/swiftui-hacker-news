@@ -5,6 +5,10 @@ class ContentViewController: ObservableObject {
     
     @Published var activeStory: StoryItem? = nil
     
+    @Published var shouldShowComments: Bool = false
+
+    @Published var shouldShowFeed: Bool = false
+
     private let storyIds = [
         22862053,
         22859935,

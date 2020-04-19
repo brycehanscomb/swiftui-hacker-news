@@ -19,21 +19,22 @@ public struct CustomButtonStyle: ButtonStyle {
 }
 
 struct TitlebarAccessory: View {
+    @Binding public var shouldShowFeed: Bool
+    @Binding public var shouldShowComments: Bool
+    
     var body: some View {
-        HStack(alignment: .top) {
-            Button(action: { return }) {
-                Text("Show Feed")
+        HStack(alignment: .center) {
+            Button(action: {
+                self.shouldShowFeed.toggle()
+            }) {
+                Text("Show Feed: \(self.shouldShowFeed ? "Yes" : "No")")
             }
             Spacer()
-            Button(action: { return }) {
+            Button(action: {
+                self.shouldShowComments.toggle()
+            }) {
                 Text("Show Comments")
             }
         }.frame(maxWidth: .infinity, maxHeight: .infinity).padding(7)
-    }
-}
-
-struct TitlebarAccessory_Previews: PreviewProvider {
-    static var previews: some View {
-        TitlebarAccessory().previewLayout(.fixed(width: 400, height: 40))
     }
 }

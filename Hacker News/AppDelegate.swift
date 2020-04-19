@@ -33,7 +33,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
 //        window.titleVisibility = .hidden
         
-        self.createTitleBar(window: window)
+//        self.createTitleBar(window: window)
         
         window.makeKeyAndOrderFront(nil)
     }
@@ -43,16 +43,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func createTitleBar(window: NSWindow) {
-        let titlebarAccessoryView = TitlebarAccessory().edgesIgnoringSafeArea(.top)
-        let accessoryHostingView = NSHostingView(rootView:titlebarAccessoryView)
-        let titlebarAccessory = NSTitlebarAccessoryViewController()
-        
-        titlebarAccessory.view = accessoryHostingView
-        titlebarAccessory.layoutAttribute = .bottom
-        accessoryHostingView.frame.size = accessoryHostingView.intrinsicContentSize
-        
-        // Add the titlebar accessory
-        window.addTitlebarAccessoryViewController(titlebarAccessory)
+//        let titlebarAccessoryView = TitlebarAccessory().edgesIgnoringSafeArea(.top)
+//        let accessoryHostingView = NSHostingView(rootView:titlebarAccessoryView)
+//        let titlebarAccessory = NSTitlebarAccessoryViewController()
+//        
+//        titlebarAccessory.view = accessoryHostingView
+//        titlebarAccessory.layoutAttribute = .bottom
+//        accessoryHostingView.frame.size = accessoryHostingView.intrinsicContentSize
+//        
+//        // Add the titlebar accessory
+//        window.addTitlebarAccessoryViewController(titlebarAccessory)
     }
 
 
