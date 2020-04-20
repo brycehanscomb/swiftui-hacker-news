@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02203DAA244DB41F00747375 /* CommentsViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02203DA9244DB41F00747375 /* CommentsViewer.swift */; };
 		026F5B7E24485DFB00B3A9EE /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026F5B7D24485DFB00B3A9EE /* ContentViewController.swift */; };
 		029694B524469F2C00EB12A1 /* StoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029694B424469F2C00EB12A1 /* StoryView.swift */; };
 		02ACA3102445C4A1004CEE93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02ACA30F2445C4A1004CEE93 /* AppDelegate.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		02203DA9244DB41F00747375 /* CommentsViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewer.swift; sourceTree = "<group>"; };
 		026F5B7D24485DFB00B3A9EE /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		029694B424469F2C00EB12A1 /* StoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryView.swift; sourceTree = "<group>"; };
 		02ACA30C2445C4A1004CEE93 /* Hacker News.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hacker News.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,6 +76,7 @@
 				02AF467B2446D9F600E41DE8 /* WebView.swift */,
 				02AF467D2446DE8E00E41DE8 /* TitlebarAccessory.swift */,
 				026F5B7D24485DFB00B3A9EE /* ContentViewController.swift */,
+				02203DA9244DB41F00747375 /* CommentsViewer.swift */,
 			);
 			path = "Hacker News";
 			sourceTree = "<group>";
@@ -161,6 +164,7 @@
 				029694B524469F2C00EB12A1 /* StoryView.swift in Sources */,
 				02AF467C2446D9F600E41DE8 /* WebView.swift in Sources */,
 				02ACA3122445C4A1004CEE93 /* ContentView.swift in Sources */,
+				02203DAA244DB41F00747375 /* CommentsViewer.swift in Sources */,
 				026F5B7E24485DFB00B3A9EE /* ContentViewController.swift in Sources */,
 				02ACA3102445C4A1004CEE93 /* AppDelegate.swift in Sources */,
 			);

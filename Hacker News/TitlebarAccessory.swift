@@ -33,7 +33,7 @@ struct TitlebarAccessory: View {
             Button(action: {
                 self.shouldShowComments.toggle()
             }) {
-                Text("Show Comments")
+                Text("Show Comments: \(self.shouldShowComments ? "Yes" : "No")")
             }
         }.frame(maxWidth: .infinity, maxHeight: .infinity).padding(7)
     }

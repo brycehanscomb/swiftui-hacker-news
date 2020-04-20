@@ -99,7 +99,7 @@ struct ContentView: View {
                 shouldShowFeed: self.$vm.shouldShowFeed,
                 shouldShowComments: self.$vm.shouldShowComments
             ).frame(maxWidth: .infinity, maxHeight: 30)
-            NavigationView {
+            HSplitView {
                 if self.vm.shouldShowFeed {
                     ScrollView {
                         ForEach(self.vm.loadedStories, id: \.title) { storyItem in
@@ -113,10 +113,15 @@ struct ContentView: View {
                     VStack {
                         Text(String(self.vm.activeStory!.url!))
                         WebView(title: self.$windowTitle, url: URL(string: self.vm.activeStory!.url!)!)
-                    }
+                    }.frame(idealWidth: 1000)
                 }
                 if self.vm.activeStory == nil {
                     Spacer()
+                }
+                if self.vm.shouldShowComments && self.vm.activeStory != nil {
+                    VStack() {
+                        CommentsViewer(storyId: self.vm.activeStory!.id)
+                    }.frame(minWidth: 320, idealWidth: 640, maxWidth: .infinity, maxHeight: .infinity)
                 }
             }.frame(maxWidth: .infinity, maxHeight: .infinity)
         }

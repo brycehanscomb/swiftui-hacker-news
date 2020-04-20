@@ -5,6 +5,7 @@ import WebKit
 struct StoryItem: Decodable, Equatable {
     let title: String
     let url: String?
+    let id: Int
     
     static func == (lsh: StoryItem, rsh: StoryItem) -> Bool {
         return String("\(lsh.title):\(lsh.url)") == String("\(rsh.title):\(rsh.url)")

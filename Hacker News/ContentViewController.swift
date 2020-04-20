@@ -5,7 +5,7 @@ class ContentViewController: ObservableObject {
     
     @Published var activeStory: StoryItem? = nil
     
-    @Published var shouldShowComments: Bool = false
+    @Published var shouldShowComments: Bool = true
 
     @Published var shouldShowFeed: Bool = false
 
