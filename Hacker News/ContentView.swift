@@ -96,6 +96,7 @@ struct ContentView: View {
     var body: some View {
         VStack {
             TitlebarAccessory(
+                currentUrl: self.vm.activeStory?.url,
                 shouldShowFeed: self.$vm.shouldShowFeed,
                 shouldShowComments: self.$vm.shouldShowComments
             ).frame(maxWidth: .infinity, maxHeight: 30)
@@ -111,7 +112,6 @@ struct ContentView: View {
                 }
                 if self.vm.activeStory != nil {
                     VStack {
-                        Text(String(self.vm.activeStory!.url!))
                         WebView(title: self.$windowTitle, url: URL(string: self.vm.activeStory!.url!)!)
                     }.frame(idealWidth: 1000)
                 }

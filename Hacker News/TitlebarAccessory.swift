@@ -19,6 +19,8 @@ public struct CustomButtonStyle: ButtonStyle {
 }
 
 struct TitlebarAccessory: View {
+    public let currentUrl: String?
+    
     @Binding public var shouldShowFeed: Bool
     @Binding public var shouldShowComments: Bool
     
@@ -28,6 +30,10 @@ struct TitlebarAccessory: View {
                 self.shouldShowFeed.toggle()
             }) {
                 Text("Show Feed: \(self.shouldShowFeed ? "Yes" : "No")")
+            }
+            Spacer()
+            if self.currentUrl != nil {
+                Text(self.currentUrl!)
             }
             Spacer()
             Button(action: {
